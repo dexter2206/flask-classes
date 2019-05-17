@@ -1,12 +1,6 @@
-# Example 01: basic Flask application
-from flask import Flask, request
+import requests
 
-app = Flask(__name__)
-
-@app.route('/headers', methods=['GET'])
-def headers():
-    print(f'The headers you provided: {request.headers}')
-    return f'Your user agent is: {request.headers["User-Agent"]}'
 
 if __name__ == '__main__':
-    app.run()
+    response = requests.post('http://localhost:5000/form', data={'foo': 1})
+    print(response.text)
