@@ -15,5 +15,9 @@ def hello_with_path_param(name):
 def greeting_with_path_param(greating, name):
     return f'{greating.title()}, {name}!'
 
+@app.route('/integer/<int:x>')
+def integer(x):
+    return f'You int incremented by one: {x+1}'
+
 if __name__ == '__main__':
     app.run()
