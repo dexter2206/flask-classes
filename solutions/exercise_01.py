@@ -34,6 +34,13 @@ def add_department():
         response.status_code = 400
         return response
 
+@app.route('/departments', methods=['GET'])
+def get_all_departments():
+    departments = Department.query.all() # Collection of all departments
+    dept_dicts = [dept.to_dict() for dept in departments]
+    return jsonify(dept_dicts)
+    # return jsonify([dept.to_dict() for dept in Department.query.all()])
+
 # Resource for getting given department.
 @app.route('/departments/<int:dept_id>', methods=['GET'])
 def get_department(dept_id):
