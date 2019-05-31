@@ -35,6 +35,10 @@ def add_employee():
     # Schemas also have
     return employee_schema.jsonify(emp)
 
+@app.route('/employees/', methods=['GET'])
+def get_all_employees():
+    return employees_schema.jsonify(Employee.query.all())
+
 # Resource for getting employee of given ID
 @app.route('/employees/<int:emp_id>', methods=['GET'])
 def get_employee(emp_id):

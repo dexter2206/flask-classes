@@ -32,6 +32,7 @@ def add_department():
         # Even in case of error we return JSON encoded response.
         response = jsonify({'error': 'Bad request', 'missing field': 'name'})
         response.status_code = 400
+        return response
 
 # Resource for getting given department.
 @app.route('/departments/<int:dept_id>', methods=['GET'])
