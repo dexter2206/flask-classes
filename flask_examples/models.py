@@ -19,7 +19,7 @@ class Employee(db.Model):
     last_name = db.Column(db.String, nullable=False)
     dept_id = db.Column(db.Integer, db.ForeignKey('departments.dept_id'))
 
-    department = db.relationship('Department', back_populates='employees')
+    department = db.relationship('Department', back_populates='employees', lazy=True)
     projects = db.relationship('Project', secondary=emp_proj, back_populates='employees')
 
     def to_dict(self):
@@ -33,7 +33,7 @@ class Employee(db.Model):
 class Project(db.Model):
 
     __tablename__ = 'projects'
-    proj_id = db.Column(db.Integer, auto_increment=True, primary_key=True)
+    proj_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String)
 
     employees = db.relationship('Employee', secondary=emp_proj, back_populates='projects')
