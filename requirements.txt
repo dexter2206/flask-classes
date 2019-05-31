@@ -1,2 +1,5 @@
 flask
 requests
+flask_sqlalchemy
+flask_marshmallow
+marshmallow-sqlalchemy
