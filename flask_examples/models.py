@@ -22,6 +22,11 @@ class Employee(db.Model):
     department = db.relationship('Department', back_populates='employees')
     projects = db.relationship('Project', secondary=emp_proj, back_populates='employees')
 
+    def to_dict(self):
+        return {'first_name': self.first_name, 'last_name': self.last_name,
+                'department': self.department.to_dict() if self.department is not None else None,
+                'dept_id': self.dept_id}
+
     def __repr__(self):
         return f'{self.first_name} {self.last_name} <id {self.emp_id}>'
 
